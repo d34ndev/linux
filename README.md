@@ -22,7 +22,7 @@ sudo dnf update
 
 
 # Main Tools
-sudo dnf install @development-tools htop btop wget curl xclip rust cargo openssl-devel libyaml-devel zlib-devel gmp-devel mysql-devel make automake gcc gcc-c++ kernel-devel
+sudo dnf install @development-tools htop btop wget curl xclip rust cargo openssl-devel libyaml-devel zlib-devel gmp-devel mysql-devel make automake gcc gcc-c++ kernel-devel ripgrep
 
 # Google Chrome (once extra repos are enabled)
 sudo dnf install google-chrome-stable
@@ -55,10 +55,8 @@ curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 # Try
-mkdir -p ~/.local/bin
-curl -sL https://raw.githubusercontent.com/tobi/try/refs/heads/main/try.rb > ~/.local/bin/try.rb
-chmod +x ~/.local/bin/try.rb
-echo 'eval "$(~/.local/bin/try.rb init ~/code/tries)"' >> ~/.zshrc
+gem install try-cli
+echo 'eval "$(try init ~/code/tries)"' >> ~/.zshrc
 
 # Zsh Plugin
 git clone git@github.com:deanpcmad/zsh-plugin.git ~/.oh-my-zsh/custom/plugins/deanpcmad
