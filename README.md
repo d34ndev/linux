@@ -40,9 +40,7 @@ sudo docker compose -f /opt/docker-compose.yml up -d
 sudo dnf copr enable jdxcode/mise
 sudo dnf install -y mise
 
-mise use -g bun@latest
 mise use -g ruby@latest
-mise use -g node@lts
 
 # Zsh
 sudo dnf install zsh -y
@@ -71,24 +69,13 @@ ln -s ~/.oh-my-zsh/custom/plugins/deanpcmad/gemrc ~/.gemrc
 # Reload Zsh
 source ~/.zshrc
 
-# Kopia
-sudo rpm --import https://kopia.io/signing-key
-cat <<EOF | sudo tee /etc/yum.repos.d/kopia.repo
-[Kopia]
-name=Kopia
-baseurl=http://packages.kopia.io/rpm/stable/\$basearch/
-gpgcheck=1
-enabled=1
-gpgkey=https://kopia.io/signing-key
-EOF
-sudo dnf install kopia kopia-ui
-
+# Restic
+sudo dnf install restic
 
 # Nextcloud
 sudo dnf install nextcloud-client
 
 # Others inc Discord from the RPM Fusion Repo
-sudo dnf install thunderbird
 sudo dnf install discord
 flatpak install com.spotify.Client
 flatpak install md.obsidian.Obsidian
@@ -99,12 +86,23 @@ sudo dnf install 1password
 # VSCode
 sudo dnf install code
 
+# Codex
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+
+# Claude
+curl -fsSL https://claude.ai/install.sh | bash
+
 # Tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 
-# Nord VPN
-sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui
+# Netbird
+curl -fsSL https://pkgs.netbird.io/install.sh | sh
+netbird up
+
+# PIA VPN
+wget https://installers.privateinternetaccess.com/download/pia-linux-3.7.2-08420.run
+./pia-linux-3.7.2-08420.run
 
 # GitHub CLI
 sudo dnf install dnf5-plugins
@@ -135,14 +133,6 @@ This is optional, but useful for remote access through Tailscale SSH.
 ```
 sudo systemctl start sshd.service
 sudo systemctl enable sshd.service
-```
-
-## AI Tools
-
-```
-npm install -g @anthropic-ai/claude-code
-npm install -g @google/gemini-cli
-npm install -g @openai/codex
 ```
 
 ## KDE Tweaks
