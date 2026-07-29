@@ -115,6 +115,9 @@ sudo dnf install cascadia-mono-nf-fonts
 
 # MPV
 sudo dnf install mpv
+
+# Terra Packages - https://terrapkg.com/
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
 ## PSR
