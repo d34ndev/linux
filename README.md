@@ -83,6 +83,10 @@ flatpak install md.obsidian.Obsidian
 # 1Password
 sudo dnf install 1password
 
+# Proton Pass - https://proton.me/support/set-up-proton-pass-linux
+wget https://proton.me/download/pass/linux/ProtonPass.rpm
+sudo dnf install ./ProtonPass.rpm
+
 # VSCode
 sudo dnf install code
 
