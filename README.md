@@ -135,15 +135,6 @@ sudo dnf install mpv
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
-## PSR
-
-Edit the grub file `sudo nano /etc/default/grub` and add `i915.enable_psr=0` to the end of `GRUB_CMDLINE_LINUX`. 
-Then run `sudo grub2-mkconfig -o /boot/grub2/grub.cfg`
-
-## SELinux
-
-Might need to disable SELinux - https://docs.fedoraproject.org/en-US/quick-docs/selinux-changing-states-and-modes/#_disabling_selinux
-
 ## OpenSSH Server
 
 This is optional, but useful for remote access through Tailscale SSH.
