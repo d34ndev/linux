@@ -40,7 +40,10 @@ sudo docker compose -f /opt/docker-compose.yml up -d
 sudo dnf copr enable jdxcode/mise
 sudo dnf install -y mise
 
-mise use -g ruby@latest
+mise use -g ruby@4
+mise use -g claude@latest
+mise use -g codex@latest
+mise use -g opencode@latest
 
 # Zsh
 sudo dnf install zsh -y
@@ -64,7 +67,6 @@ ln -s ~/.oh-my-zsh/custom/plugins/deanpcmad/gitconfig ~/.gitconfig
 ln -s ~/.oh-my-zsh/custom/plugins/deanpcmad/gitignore ~/.gitignore
 ln -s ~/.oh-my-zsh/custom/plugins/deanpcmad/irbrc ~/.irbrc
 ln -s ~/.oh-my-zsh/custom/plugins/deanpcmad/gemrc ~/.gemrc
-
 
 # Reload Zsh
 source ~/.zshrc
@@ -92,12 +94,6 @@ sudo dnf install code
 
 # Zed
 curl -f https://zed.dev/install.sh | sh
-
-# Codex
-curl -fsSL https://chatgpt.com/codex/install.sh | sh
-
-# Claude
-curl -fsSL https://claude.ai/install.sh | bash
 
 # Tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
