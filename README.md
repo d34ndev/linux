@@ -114,7 +114,19 @@ sudo dnf install gh --repo gh-cli
 
 # Nerd Font
 sudo dnf install cascadia-mono-nf-fonts
-# Then reopen terminal, create a profile with the NerdFont
+
+# Create a Konsole profile using the Nerd Font, and set it as the default
+mkdir -p ~/.local/share/konsole
+cat > ~/.local/share/konsole/Main.profile << 'EOF'
+[Appearance]
+Font=Cascadia Mono NF,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[General]
+Name=Main
+Parent=FALLBACK/
+EOF
+
+kwriteconfig6 --file konsolerc --group "Desktop Entry" --key DefaultProfile Main.profile
 
 # MPV
 sudo dnf install mpv
