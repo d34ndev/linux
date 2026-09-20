@@ -90,6 +90,9 @@ sudo dnf install ./ProtonPass.rpm
 # VSCode
 sudo dnf install code
 
+# Zed
+curl -f https://zed.dev/install.sh | sh
+
 # Codex
 curl -fsSL https://chatgpt.com/codex/install.sh | sh
 
