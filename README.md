@@ -103,10 +103,6 @@ curl -fsSL https://claude.ai/install.sh | bash
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 
-# Netbird
-curl -fsSL https://pkgs.netbird.io/install.sh | sh
-netbird up
-
 # PIA VPN
 wget https://installers.privateinternetaccess.com/download/pia-linux-3.7.2-08420.run
 ./pia-linux-3.7.2-08420.run
