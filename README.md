@@ -121,8 +121,8 @@ curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 
 # PIA VPN
-wget https://installers.privateinternetaccess.com/download/pia-linux-3.7.2-08420.run
-./pia-linux-3.7.2-08420.run
+wget https://installers.privateinternetaccess.com/download/pia-linux-3.8-08539.run
+sh ./pia-linux-3.8-08539.run
 
 # GitHub CLI
 sudo dnf install dnf5-plugins
