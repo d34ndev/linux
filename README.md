@@ -155,6 +155,13 @@ kwriteconfig6 --file konsolerc --group "Desktop Entry" --key DefaultProfile Main
 # MPV
 sudo dnf install mpv
 
+# PlasmaZones (window snapping/tiling for KDE Plasma 6 on Wayland) - https://github.com/fuddlesworth/PlasmaZones
+sudo dnf copr enable fuddlesworth/PlasmaZones
+sudo dnf install plasmazones
+systemctl --user enable --now plasmazones.service
+kbuildsycoca6 --noincremental
+# Check System Settings > Window Management > Desktop Effects > PlasmaZones is ticked
+
 # Terra Packages - https://terrapkg.com/
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
