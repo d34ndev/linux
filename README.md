@@ -27,14 +27,42 @@ sudo dnf install @development-tools htop btop wget curl xclip rust cargo openssl
 # Google Chrome (once extra repos are enabled)
 sudo dnf install google-chrome-stable
 
-# Docker
-curl -fsSL https://get.docker.com | sh
-sudo usermod -aG docker dean
-sudo systemctl start docker
-sudo systemctl enable docker
+# Podman (podman-docker provides a `docker` command that runs podman)
+sudo dnf install podman podman-compose podman-docker
+sudo touch /etc/containers/nodocker
 
-sudo wget -O /opt/docker-compose.yml https://raw.githubusercontent.com/deanpcmad/fedora/refs/heads/main/docker-compose.yml
-sudo docker compose -f /opt/docker-compose.yml up -d
+# Docker-compatible API socket, for tools that talk to Docker
+systemctl --user enable --now podman.socket
+echo 'export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock' >> ~/.zshrc
+
+# Start containers on boot
+systemctl --user enable podman-restart.service
+loginctl enable-linger dean
+
+cat <<'EOF' | sudo tee /opt/docker-compose.yml > /dev/null
+services:
+  mysql:
+    image: docker.io/library/mysql:8.4
+    container_name: mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+  redis:
+    image: docker.io/library/redis:8
+    container_name: redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    restart: always
+
+volumes:
+  mysql-data:
+EOF
+
+podman compose -f /opt/docker-compose.yml up -d
 
 # Mise
 sudo dnf copr enable jdxcode/mise
