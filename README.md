@@ -9,10 +9,6 @@ sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfre
 # Don't use the RPM Fusion Mirror, as sometimes it can pick a mirror which is down
 sudo sed -i -E '/^ *metalink=/s/^/# /;/^ *# *baseurl=/s/^# *//' /etc/yum.repos.d/rpmfusion-*.repo
 
-# 1Password Repo
-sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-
 # VS Code Repo
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
@@ -109,9 +105,6 @@ sudo dnf install nextcloud-client
 sudo dnf install discord
 flatpak install com.spotify.Client
 flatpak install md.obsidian.Obsidian
-
-# 1Password
-sudo dnf install 1password
 
 # Proton Pass - https://proton.me/support/set-up-proton-pass-linux
 wget https://proton.me/download/pass/linux/ProtonPass.rpm
