@@ -159,6 +159,14 @@ kbuildsycoca6 --noincremental
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
+## Steam
+
+Steam is in the RPM Fusion nonfree repo, which is enabled in the main install. The 32-bit libraries it needs are installed automatically.
+
+```bash
+sudo dnf install steam
+```
+
 ## OpenSSH Server
 
 This is optional, but useful for remote access through Tailscale SSH.
